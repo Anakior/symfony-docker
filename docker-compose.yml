@@ -3,6 +3,7 @@ version: '2'
 services:
     db:
         image: mysql
+        container_name: symfony_db
         volumes:
             - "./.data/db:/var/lib/mysql"
         environment:
@@ -12,6 +13,7 @@ services:
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     php:
         build: php7-fpm
+        container_name: symfony_php
         ports:
             - 9000:9000
         volumes:
@@ -19,6 +21,7 @@ services:
             - ./logs/symfony:/var/www/symfony/app/logs
     nginx:
         build: nginx
+        container_name: symfony_nginx
         ports:
             - 80:80
         volumes_from:
@@ -27,6 +30,7 @@ services:
             - ./logs/nginx/:/var/log/nginx
     elk:
         image: willdurand/elk
+        container_name: symfony_log
         ports:
             - 81:80
         volumes:
@@ -37,7 +41,7 @@ services:
             - nginx
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
-        container_name: phpmyadmin
+        container_name: symfony_phpmyadmin
         environment:
          - PMA_ARBITRARY=1
         restart: always
