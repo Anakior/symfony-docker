@@ -1,4 +1,6 @@
-# Docker compose base for Symfony3
+# Docker compose base for Symfony3 with phpmyadmin
+
+Based on https://github.com/maxpou/docker-symfony with some extra and a complete config for Symfony3
 
 ## To create
 
