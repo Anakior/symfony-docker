@@ -23,4 +23,4 @@
 - **LogStash :** http://{server_name}:81
 - **PhpMyAdmin :** http://{server_name}:8080
 
-Note : You can change **server_name** in **nginx/symfony.conf**
+Note : You can change **server_name** in **nginx/symfony.conf** meanwhile it will be **symfony.dev**
