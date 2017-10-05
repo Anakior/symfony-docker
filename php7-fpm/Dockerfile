@@ -1,5 +1,5 @@
 # See https://github.com/docker-library/php/blob/4677ca134fe48d20c820a19becb99198824d78e3/7.0/fpm/Dockerfile
-FROM php:7.0-fpm
+FROM php:7.0.22-fpm
 
 MAINTAINER Maxence POUTORD <maxence.poutord@gmail.com>
 
@@ -23,7 +23,6 @@ RUN "date"
 # Type docker-php-ext-install to see available extensions
 RUN docker-php-ext-install pdo pdo_mysql opcache
 
-
 # install xdebug
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug opcache
@@ -35,13 +34,7 @@ RUN echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/docker-php-
 RUN echo "xdebug.idekey=\"PHPSTORM\"" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-# Change short_open_tag
-RUN touch /usr/local/etc/php/conf.d/tags.ini \
-    && echo "short_open_tag = off;" >> /usr/local/etc/php/conf.d/tags.ini
-
-#Change TimeZone
-RUN touch /usr/local/etc/php/conf.d/timezone.ini \
-    && echo "date.timezone = Europe/Paris;" >> /usr/local/etc/php/conf.d/timezone.ini
+ADD php.ini /usr/local/etc/php/
 
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
