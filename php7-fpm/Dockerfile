@@ -39,7 +39,13 @@ RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-x
 RUN touch /usr/local/etc/php/conf.d/tags.ini \
     && echo "short_open_tag = off;" >> /usr/local/etc/php/conf.d/tags.ini
 
+#Change TimeZone
+RUN touch /usr/local/etc/php/conf.d/timezone.ini \
+    && echo "date.timezone = Europe/Paris;" >> /usr/local/etc/php/conf.d/timezone.ini
+
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
+
+RUN usermod -u 1000 www-data
 
 WORKDIR /var/www/symfony
