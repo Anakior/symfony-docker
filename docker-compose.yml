@@ -4,8 +4,8 @@ services:
     db:
         image: mysql
         container_name: symfony_db
-        volumes:
-            - "./.data/db:/var/lib/mysql"
+        ports:
+            - "3306:3306"
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -24,6 +24,8 @@ services:
         container_name: symfony_nginx
         ports:
             - 80:80
+        links:
+            - php
         volumes_from:
             - php
         volumes:
@@ -43,6 +45,8 @@ services:
         image: phpmyadmin/phpmyadmin
         container_name: symfony_phpmyadmin
         environment:
-         - PMA_ARBITRARY=1
+            - PMA_ARBITRARY=1
         ports:
-         - 8080:80
+            - 8080:80
+        links:
+            - db:mysql_master
