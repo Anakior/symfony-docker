@@ -1,4 +1,4 @@
-# Docker compose base for Symfony3 with phpmyadmin
+# Docker compose base for Symfony2/3 with phpmyadmin
 
 ## To create
 
@@ -18,7 +18,7 @@
 
 ## Using docker-sync
 
-Symfony Docker can be very slow so i have added the possibility to use docker-sync. You have to install it with:
+Symfony Docker can be very slow on mac (don't use it on linux this is useless) so i have added the possibility to use docker-sync. You have to install it with:
 
 - **sudo gem install docker-sync**
 
