@@ -18,6 +18,20 @@ Based on https://github.com/maxpou/docker-symfony with some extra and a complete
 
 - **docker-compose stop -t 0 && docker-compose rm --all  && docker-compose build && docker-compose up -d --remove-orphans**
 
+## Using docker-sync
+
+Symfony Docker can be very slow so i have added the possibility to use docker-sync. You have to install it with:
+
+- **sudo gem install docker-sync**
+
+The file are separated to allow to use either docker-sync or not so to launch it instead of a docker-compose start do :
+
+- **make start_dev** (this will download a lot of thing the first time)
+
+To stop it
+
+- **make stop_dev**
+
 
 ## URL
 

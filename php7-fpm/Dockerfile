@@ -42,4 +42,6 @@ RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
 
 RUN usermod -u 1000 www-data
 
+RUN chown -R www-data:www-data /var/www/symfony/app/cache
+
 WORKDIR /var/www/symfony
