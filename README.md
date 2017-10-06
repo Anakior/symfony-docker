@@ -6,7 +6,7 @@
 - edit .env to change vars
 - **docker-compose build**
 - **docker-compose up -d**
-- add in **/etc/hosts** this line : **127.0.0.1 symfony.dev**
+- add in **/etc/hosts** this line : **127.0.0.1 symfony.dev** or **192.168.xxx.xxx symfony.dev** (depending on your conf, the ip you use for docker)
 
 ## To start
 
